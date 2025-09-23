@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>Via Educação</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="./api.js" type="module"></script>
+
+</head>
+
+<body>
+    <!--<Cabeçalho>-->
+    <header class="bg-primary text-white text-center p-4">
+        <h1 class="mb-3">Via Educação</h1>
+        <nav class="d-flex justify-content-center">
+            <input type="text" id="buscador" class="form-control w-50" placeholder="Digite o nome do curso...">
+        </nav>
+    </header>
+
+
+    <main class="container">
+        <div class="row">
+            <!-- Catálogo de Cursos-->
+            <section id="catalogo" class="col-md-4">
+                <h2>Catálogo de Cursos</h2>
+                <div id="cursoGrid" class="grid"></div>
+            </section>
+
+            <!-- Estatísticas do Curso-->
+            <section id="estatisticas" class="col-md-4">
+                <h2>Estatísticas</h2>
+                <ul>
+                    <li>Total de cursos: <span id="totalCursos">0</span></li>
+                    <li>Carga horária: <span id="cargaHoraria">0</span>h</li>
+                    <li> Gratuitos: <span id="cursosGratis">0</span></li>
+                </ul>
+            </section>
+
+            <!-- Cadastro do Curso -->
+            <section id="cadastro" class="col-md-4">
+                <h2>Cadastrar Curso</h2>
+                <form id="cursoForm">
+                    <label for="nomeCurso">Nome do Curso:</label>
+                    <input type="text" id="nomeCurso" required>
+
+                    <label for="categoria">Categoria:</label>
+                    <input type="text" id="categoria" required>
+
+                    <label for="carga">Carga Horária (h):</label>
+                    <input type="number" id="carga" min="1" required>
+
+                    <label for="nivel">Nível:</label>
+                    <select id="nivel" required>
+                        <option value="Técnico">Técnico</option>
+                        <option value="Graduação">Graduação</option>
+                        <option value="Pós-Graduação">Pós-Graduação</option>
+                    </select>
+
+                    <label for="preco">Preço:</label>
+                    <input type="number" id="preco" min="0" required>
+
+                    <button type="submit">Cadastrar Curso</button>
+                </form>
+            </section>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-3 mt-4">
+        <p class="mb-0">Via Educação - Patrícia Silva</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
