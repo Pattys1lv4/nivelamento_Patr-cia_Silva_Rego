@@ -47,10 +47,10 @@ document.getElementById("cursoForm").addEventListener("submit", (e) => {
     e.preventDefault();
 
     let nome = document.getElementById("nomeCurso").value.trim();
-    let categoria = document.getElementById("categoria").value.trim();
-    let carga = parseInt(document.getElementById("carga").value, 10);
-    let nivel = document.getElementById("nivel").value;
-    let preco = parseFloat(document.getElementById("preco").value);
+    let categoria = document.getElementById("categoriaCurso").value.trim();
+    let carga = parseInt(document.getElementById("cargaHoraria").value, 10);
+    let nivel = document.getElementById("nivelCurso").value;
+    let preco = parseFloat(document.getElementById("precoCurso").value);
 
     if (!nome || !categoria || isNaN(carga) || isNaN(preco)) {
         alert("Preencha todos os campos corretamente!");
