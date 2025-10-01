@@ -29,19 +29,6 @@
             <section id="catalogo" class="col">
                 <h2>Catálogo de Cursos</h2>
                 <div id="cursoGrid" class="grid">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h4 class="card-title">Nome do Curso</h4>
-                            <div class="row">
-                                <h6 class="card-subtitle mb-2 text-body-secondary col">Nível</h6>
-                                <h6 class="card-subtitle mb-2 text-body-secondary col">Categoria</h6>
-                            </div>
-                            <div class="row">
-                                <p class="card-text col">Preço</p>
-                                <p class="card-text col">Carga</p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </section>
         </div>
@@ -49,97 +36,67 @@
 
             <!-- Cadastro do Curso -->
             <section id="cadastro" class="col-8">
-                <!--form id="cursoForm">
+                <form id="cursoForm">
+
                     <div class="Nome do Curso">
                         <label for="nomeCurso" class="col-sm-2 col-form-label">Nome do Curso</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="nomeCurso" placeholder="Nome do Curso" required>
                         </div>
                     </div>
+
                     <div class="Categoria do Curso">
                         <label for="categoriaCurso" class="col-sm-2 col-form-label">Categoria do Curso</label>
                         <div class="col-sm-10">
                             <select class="form-control" id="categoriaCurso" required>
-                                <option value="">Categoria do Curso...</option>
+                                <option value="" disabled selected>Categoria do Curso...</option>
                                 <option value="1">Presencial</option>
                                 <option value="2">Semi-Presencial</option>
                                 <option value="3">EaD</option>
                             </select>
                         </div>
                     </div>
-                    <div class="row align-items-center">
-                        <div class="col-auto my-1">
-                            <button type="submit" class="btn btn-primary">Enviar</button>
+                    <div class="Nível do Curso">
+                        <label for="nivelCurso" class="col-sm-2 col-form-label">Nível do Curso</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="nivelCurso" required>
+                                <option value="" disabled selected>Nível do Curso...</option>
+                                <option value="1">Técnico</option>
+                                <option value="2">Graduação</option>
+                                <option value="3">Pós-Graduação</option>
+                            </select>
                         </div>
                     </div>
 
-        </div>
-        <fieldset class="nivel">
-            <div class="row">
-                <legend class="col-form-label col-sm-2 pt-0">Níveis</legend>
-                <div class="col-sm-10">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="nivel" id="nivel1" value="Técnico" checked>
-                        <label class="form-check-label" for="nivel1">
-                            Técnico
-                        </label>
+                    <div class="carga-horaria">
+                        <label for="cargaHoraria" class="col-sm-2 col-form-label">Carga Horária</label>
+                        <input type="number" min="1" class="form-control" id="cargaHoraria" placeholder="Carga Horária"
+                            required>
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="nivel" id="nivel2" value="Graduação">
-                        <label class="form-check-label" for="nivel2">
-                            Graduação
-                        </label>
+
+                    <div class="preco">
+                        <label for="precoCurso" class="col-sm-2 col-form-label">Preço do Curso</label>
+                        <input type="number" step="0.01" min="0" class="form-control" id="precoCurso"
+                            placeholder="Grátis" required>
                     </div>
-                    <div class="form-check disabled">
-                        <input class="form-check-input" type="radio" name="nivel" id="nivel3" value="Pós-Graduação "
-                            disabled>
-                        <label class="form-check-label" for="nivel3">
-                            Pós-Graduação
-                        </label>
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary">Cadastrar Curso</button>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </fieldset>
-        <div class="form-group row">
-            <div class="col-sm-10">
-                <button type="submit" class="btn btn-primary">Cadastrar Curso</button>
-            </div>
-        </div>
-        </form-->
-                <h2>Cadastrar Curso</h2>
-                <form id="cursoForm">
-                    <label for="nomeCurso">Nome do Curso:</label>
-                    <input type="text" id="nomeCurso" required>
-
-                    <label for="categoria">Categoria:</label>
-                    <input type="text" id="categoria" required>
-
-                    <label for="carga">Carga Horária (h):</label>
-                    <input type="number" id="carga" min="1" required>
-
-                    <label for="nivel">Nível:</label>
-                    <select id="nivel" name="nivel" required>
-                        <option value="Técnico">Técnico</option>
-                        <option value="Graduação">Graduação</option>
-                        <option value="Pós-Graduação">Pós-Graduação</option>
-                    </select>
-
-                    <label for="preco">Preço:</label>
-                    <input type="number" id="preco" min="0" required>
-
-                    <button type="submit">Cadastrar Curso</button>
                 </form>
             </section>
+        </div>
 
-            <!-- Estatísticas do Curso-->
-            <section id="estatisticas" class="col-4">
-                <h2>Estatísticas</h2>
-                <ul>
-                    <li>Total de cursos: <span id="totalCursos">0</span></li>
-                    <li>Carga horária: <span id="cargaHoraria">0</span></li>
-                    <li> Gratuitos: <span id="cursosGratis">0</span></li>
-                </ul>
-            </section>
+        <!-- Estatísticas do Curso-->
+        <section id="estatisticas" class="col-4">
+            <h2>Estatísticas</h2>
+            <ul>
+                <li>Total de cursos: <span id="totalCursos">0</span></li>
+                <li>Carga horária: <span id="cargaHoraria">0</span></li>
+                <li> Gratuitos: <span id="cursosGratis">0</span></li>
+            </ul>
+        </section>
         </div>
     </main>
 
