@@ -17,7 +17,9 @@ function modelo(curso) {
                     <p class="card-text col">${curso.carga} h</p>
                 </div>
                 <div class="row">
-                    <button type="button" class="btn btn-primary" id="deletar-${curso.id}"></button>
+                    <button type="button" class="btn btn-danger" id="deletar-${curso.id}">
+                        <i class="bi bi-trash3"></i>
+                    </button>
                 </div>
 
             </div>
