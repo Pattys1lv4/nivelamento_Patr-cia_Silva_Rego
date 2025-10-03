@@ -1,5 +1,5 @@
 import { Curso } from './models.js'
-import { listar, criar } from './api.js'
+import { listar, criar, deletar } from './api.js'
 
 
 //Modelo de curso
@@ -16,6 +16,10 @@ function modelo(curso) {
                     <p class="card-text col">${curso.preco ? `R$ ${curso.preco.toFixed(2)}` : "Grátis"}</p>
                     <p class="card-text col">${curso.carga} h</p>
                 </div>
+                <div class="row">
+                    <button type="button" class="btn btn-primary" id="deletar-${curso.id}"></button>
+                </div>
+
             </div>
         </div>
         `;
@@ -30,6 +34,9 @@ function atualizarLista() {
         lista.forEach((curso) => {
             container.innerHTML += modelo(curso)
         });
+        lista.forEach(curso => {
+            document.getElementById(`deletar-${curso.id}`).addEventListener("click", () => deletarCurso(curso.id));
+        })
         estatistica(lista);
     });
 
@@ -74,5 +81,15 @@ document.getElementById("buscador").addEventListener("input", (e) => {
     );
     atualizarLista(filtrados);
 });
+
+//Deletar curso
+function deletarCurso(id) {
+    if (confirm("Tem certeza que deseja deletar este curso?")) {
+        deletar(id).then(() => {
+            alert("Curso deletado com sucesso!");
+            atualizarLista();
+        });
+    }
+}
 
 atualizarLista();

@@ -1,11 +1,13 @@
 export class Curso {
     constructor(
+        id,
         nome,
         categoria,
         carga,
         nivel,
         preco
     ) {
+        this.id = id;
         this.nome = nome;
         this.categoria = categoria;
         this.carga = carga;
