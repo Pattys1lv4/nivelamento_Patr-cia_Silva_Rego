@@ -1,20 +1,20 @@
-import { Curso } from './models.js';
+
 
 const HOST = "https://cursos-api.mozi.sotu.casa";
 
 /* 
 GET /cursos
 */
-async function listar() {
+export async function listar() {
     return fetch(`${HOST}/cursos`)
-        .then(res => res.json());
+        .then(res => res.json())
 }
 
 
 /*
 GET /cursos/123
 */
-async function detalhar(id) {
+export async function detalhar(id) {
     return fetch(`${HOST}/cursos/${id}`)
         .then(res => res.json());
 }
@@ -22,7 +22,7 @@ async function detalhar(id) {
 /*
 POST /cursos
 */
-async function criar(curso) {
+export async function criar(curso) {
     return fetch(`${HOST}/cursos`, {
         method: "POST",
         body: JSON.stringify(curso),
@@ -33,7 +33,7 @@ async function criar(curso) {
 /*
 PUT /cursos/123
 */
-async function atualizar(curso, id) {
+export async function atualizar(curso, id) {
     return fetch(`${HOST}/cursos/${id}`, {
         method: "PUT",
         body: JSON.stringify(curso),
@@ -44,7 +44,7 @@ async function atualizar(curso, id) {
 /*
 DELETE /cursos/123
 */
-async function deletar(id) {
+export async function deletar(id) {
     return fetch(`${HOST}/cursos/${id}`, {
         method: "DELETE"
     });
