@@ -1,6 +1,7 @@
+import { Curso } from './models.js'
+import { listar, criar } from './api.js'
 
 
-let cursos = []
 //Modelo de curso
 function modelo(curso) {
     return `
@@ -12,8 +13,8 @@ function modelo(curso) {
                     <h6 class="card-subtitle mb-2 text-body-secondary col">${curso.categoria}</h6>
                 </div>
                 <div class="row">
-                    <p class="card-text col">${curso.preco}</p>
-                    <p class="card-text col">${curso.carga}</p>
+                    <p class="card-text col">${curso.preco ? `R$ ${curso.preco.toFixed(2)}` : "Grátis"}</p>
+                    <p class="card-text col">${curso.carga} h</p>
                 </div>
             </div>
         </div>
@@ -21,25 +22,29 @@ function modelo(curso) {
 }
 
 //Atualiza a lista de curso
-function atualizarLista(lista = cursos) {
+function atualizarLista() {
     let container = document.getElementById("cursoGrid")
     container.innerHTML = ""
 
-    lista.forEach((curso) => {
-        container.innerHTML += modelo(curso)
+    listar().then(lista => {
+        lista.forEach((curso) => {
+            container.innerHTML += modelo(curso)
+        });
+        estatistica(lista);
     });
+
 }
 
 //Estatísticas
-function estatistica() {
+function estatistica(lista) {
     let totalCursos = document.getElementById("totalCursos")
-    totalCursos.innerText = cursos.length
+    totalCursos.innerText = lista.length
 
-    let cargaHoraria = document.getElementById("cargaHoraria")
-    cargaHoraria.innerText = cursos.reduce((tempo, curso) => tempo + parseInt(curso.carga), 0)
+    let cargaHoraria = document.getElementById("cargaHorariaTotal")
+    cargaHoraria.innerText = lista.reduce((tempo, curso) => tempo + parseInt(curso.carga), 0)
 
-    let cursoGratuito = document.getElementById("cursoGratuito")
-    cursoGratuito.innerText = cursos.filter(curso => curso.preco === "Gratuito").length
+    let cursosGratis = document.getElementById("cursosGratis")
+    cursosGratis.innerText = lista.filter(curso => !curso.preco).length
 }
 
 //Cadastro de curso
@@ -52,18 +57,11 @@ document.getElementById("cursoForm").addEventListener("submit", (e) => {
     let nivel = document.getElementById("nivelCurso").value;
     let preco = parseFloat(document.getElementById("precoCurso").value);
 
-    if (!nome || !categoria || isNaN(carga) || isNaN(preco)) {
-        alert("Preencha todos os campos corretamente!");
-        return;
-    }
-    else {
-        alert("Curso adicionado com sucesso!")
-    }
-
-    cursos.push({ nome, categoria, carga, nivel, preco });
-
-    atualizarLista();
-    estatistica();
+    criar(new Curso(null, nome, categoria, carga, nivel, preco))
+        .then(() => {
+            alert("Curso adicionado com sucesso!");
+            atualizarLista();
+        });
 
     e.target.reset(); // limpa o formulário
 });
@@ -77,22 +75,4 @@ document.getElementById("buscador").addEventListener("input", (e) => {
     atualizarLista(filtrados);
 });
 
-/*let cursos = [
-    { nome: "curso", nivel: "graduação", categoria: "EaD", preco: "R$30.00", carga: "30h" },
-    { nome: "abc", nivel: "graduação", categoria: "EaD", preco: "R$30.00", carga: "30h" },
-    { nome: "cba", nivel: "graduação", categoria: "EaD", preco: "R$30.00", carga: "30h" }
-]
-
-let tudoJunto;
-//
-let curso1 = cursos[0];
-let modelo1 = modelo(curso1)
-console.log(modelo1)
-
-let curso2 = cursos[1];
-let modelo2 = modelo(curso2)
-console.log(modelo2)
-
-//
-console.log(`Valor de tudoJunto: ${tudoJunto}`);*/
-
+atualizarLista();
