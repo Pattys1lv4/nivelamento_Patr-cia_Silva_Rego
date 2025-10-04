@@ -14,7 +14,7 @@ export async function listar() {
 /*
 GET /cursos/123
 */
-export async function detalhar(id) {
+export async function buscar(id) {
     return fetch(`${HOST}/cursos/${id}`)
         .then(res => res.json());
 }
@@ -33,7 +33,7 @@ export async function criar(curso) {
 /*
 PUT /cursos/123
 */
-export async function atualizar(curso, id) {
+export async function editar(id, curso) {
     return fetch(`${HOST}/cursos/${id}`, {
         method: "PUT",
         body: JSON.stringify(curso),

@@ -45,15 +45,15 @@ function atualizarLista() {
 }
 
 //Estatísticas
-function estatistica(lista) {
+function estatistica(cursos) {
     let totalCursos = document.getElementById("totalCursos")
-    totalCursos.innerText = lista.length
+    totalCursos.innerText = cursos.length
 
     let cargaHoraria = document.getElementById("cargaHorariaTotal")
-    cargaHoraria.innerText = lista.reduce((tempo, curso) => tempo + parseInt(curso.carga), 0)
+    cargaHoraria.innerText = cursos.reduce((tempo, curso) => tempo + parseInt(curso.carga), 0)
 
     let cursosGratis = document.getElementById("cursosGratis")
-    cursosGratis.innerText = lista.filter(curso => !curso.preco).length
+    cursosGratis.innerText = cursos.filter(curso => !curso.preco).length
 }
 
 //Cadastro de curso
