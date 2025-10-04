@@ -23,13 +23,13 @@ function modelo(curso) {
                         id="editar-${curso.id}"
                         data-bs-toggle="modal" 
                         data-bs-target="#menuEditar">
-                        <i class="bi bi-pencil-square"></i>
-                    </button>
-                    <button 
+                        <img src="./assets/pencil-square.svg"></img>
+                        </button>
+                        <button 
                         type="button" 
                         class="btn btn-danger col-5" 
                         id="deletar-${curso.id}">
-                        <i class="bi bi-trash3"></i>
+                        <img src="./assets/trash3.svg"></img>
                     </button>
                 </div>
             </div>
