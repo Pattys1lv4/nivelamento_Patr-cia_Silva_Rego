@@ -1,6 +1,6 @@
 
 
-const HOST = "https://cursos-api.mozi.sotu.casa";
+const HOST = "http://sotu.casa";
 
 /* 
 GET /cursos
